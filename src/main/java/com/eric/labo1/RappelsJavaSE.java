@@ -8,8 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// Cette classe illustre trois notions de la section 4 :
-// les collections (Map), les lambdas/Streams et la manipulation de fichiers.
+// Rappels de la section 4 : Map, lambda/Stream et lecture de fichier
 public class RappelsJavaSE {
 
     public static void main(String[] args) throws IOException {
@@ -42,13 +41,8 @@ public class RappelsJavaSE {
         System.out.println();
 
         // --- 4.5 Lecture d'un fichier avec java.nio ---
-        System.out.println("3. Lecture d'un fichier");
-        Path fichier = Path.of("config.properties");
-        Files.writeString(fichier, "db.url=jdbc:postgresql://localhost:5432/labo1\ndb.user=eric\n");
-
-        List<String> lignes = Files.readAllLines(fichier);
+        System.out.println("3. Lecture du fichier config.properties");
+        List<String> lignes = Files.readAllLines(Path.of("config.properties"));
         lignes.forEach(System.out::println);
-
-        Files.delete(fichier);
     }
 }

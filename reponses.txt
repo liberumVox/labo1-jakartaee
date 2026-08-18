@@ -1,8 +1,8 @@
 Laboratoire 1 - Programmation Web Serveur III
-Eric Humberset
+Éric Humberset
 
 
-EXERCICE 2.1 - Cartographier l'ecosysteme
+EXERCICE 2.1 - Cartographier l'écosystème
 
 Java SE            Jakarta EE
 ---------          -----------
@@ -12,59 +12,59 @@ Thread             JAX-RS
 Stream             JPA
 HashMap            CDI
 
-Java SE regroupe le langage, la JVM et les bibliotheques de base : on peut
-s'en servir sans serveur. Jakarta EE est un ensemble de specifications pour
+Java SE regroupe le langage, la JVM et les bibliothèques de base : on peut
+s'en servir sans serveur. Jakarta EE est un ensemble de spécifications pour
 les applications d'entreprise : il faut un serveur d'application (Tomcat,
-WildFly...) pour les executer.
+WildFly...) pour les exécuter.
 
 
 SECTION 3 - Namespace jakarta.*
 
-Oracle a transfere la plateforme Java EE a la fondation Eclipse en 2017 mais
-a garde la marque "Java". La plateforme a donc ete renommee Jakarta EE, et a
+Oracle a transféré la plateforme Java EE à la fondation Eclipse en 2017 mais
+a gardé la marque "Java". La plateforme a donc été renommée Jakarta EE, et à
 partir de la version 9 les packages javax.* sont devenus jakarta.*. Seul le
-nom des packages change, la logique du code reste la meme.
+nom des packages change, la logique du code reste la même.
 
 Attention : Tomcat 9 et moins utilisent javax.*. Il faut Tomcat 10 ou plus
 pour jakarta.*. Comme le pom.xml utilise jakarta.jakartaee-api 10.0.0
-(Jakarta EE 10 = Servlet 6.0), j'ai utilise Tomcat 10.1.
+(Jakarta EE 10 = Servlet 6.0), j'ai utilisé Tomcat 10.1.
 
 
 MINI-EXERCICE 4.1 - Annotations
 
-Voir Livre.java. Une annotation n'execute rien toute seule : c'est une
-metadonnee que le framework (ici JPA) lit pour savoir quoi faire. @Entity dit
-que la classe correspond a une table, @Id designe la cle primaire,
-@GeneratedValue la fait generer par la base, @NotNull et @Column posent les
-contraintes du champ titre (obligatoire, 100 caracteres max).
+Voir Livre.java. Une annotation n'exécute rien toute seule : c'est une
+métadonnée que le framework (ici JPA) lit pour savoir quoi faire. @Entity dit
+que la classe correspond à une table, @Id désigne la clé primaire,
+@GeneratedValue la fait générer par la base, @NotNull et @Column posent les
+contraintes du champ titre (obligatoire, 100 caractères max).
 
 
 MINI-EXERCICE 4.3 - Map
 
 Voir RappelsJavaSE.java, partie 1. Une Map<String, Integer> associe trois
-fruits a leur prix, puis je la parcours avec entrySet() pour afficher chaque
-paire cle-valeur.
+fruits à leur prix, puis je la parcours avec entrySet() pour afficher chaque
+paire clé-valeur.
 
 
 MINI-EXERCICE 4.4 - Lambda et Stream
 
-Voir RappelsJavaSE.java, partie 2. A partir d'une List<Integer> de 1 a 10 :
+Voir RappelsJavaSE.java, partie 2. À partir d'une List<Integer> de 1 à 10 :
 filter() garde les pairs (2, 4, 6, 8, 10), map() les multiplie par 2
-(4, 8, 12, 16, 20), reduce() additionne le tout. Resultat : 60.
+(4, 8, 12, 16, 20), reduce() additionne le tout. Résultat : 60.
 
 
 SECTION 4.5 - Fichiers
 
-Voir RappelsJavaSE.java, partie 3. J'utilise java.nio.file (Path et Files)
-plutot que java.io : c'est l'API moderne, elle permet de lire ou d'ecrire un
-fichier en une ligne.
+Voir RappelsJavaSE.java, partie 3. Je lis le fichier config.properties avec
+java.nio.file (Path et Files) plutôt qu'avec java.io : c'est l'API moderne,
+elle permet de lire ou d'écrire un fichier en une ligne.
 
 
 EXERCICE 6.1 - pom.xml
 
-jakarta.jakartaee-api est en scope provided parce que Tomcat fournit deja
-l'API a l'execution. Si on l'embarquait dans le .war, il y aurait deux
-versions des memes classes et des conflits au demarrage.
+jakarta.jakartaee-api est en scope provided parce que Tomcat fournit déjà
+l'API à l'exécution. Si on l'embarquait dans le .war, il y aurait deux
+versions des mêmes classes et des conflits au démarrage.
 
-Le pilote postgresql reste en scope compile (le defaut) parce que Tomcat ne
-fournit aucun pilote de base de donnees : il doit etre dans le .war.
+Le pilote postgresql reste en scope compile (le défaut) parce que Tomcat ne
+fournit aucun pilote de base de données : il doit être dans le .war.
