@@ -1,0 +1,70 @@
+Laboratoire 1 - Programmation Web Serveur III
+Eric Humberset
+
+
+EXERCICE 2.1 - Cartographier l'ecosysteme
+
+Java SE            Jakarta EE
+---------          -----------
+ArrayList          @Entity
+javac              Servlet
+Thread             JAX-RS
+Stream             JPA
+HashMap            CDI
+
+Java SE regroupe le langage, la JVM et les bibliotheques de base : on peut
+s'en servir sans serveur. Jakarta EE est un ensemble de specifications pour
+les applications d'entreprise : il faut un serveur d'application (Tomcat,
+WildFly...) pour les executer.
+
+
+SECTION 3 - Namespace jakarta.*
+
+Oracle a transfere la plateforme Java EE a la fondation Eclipse en 2017 mais
+a garde la marque "Java". La plateforme a donc ete renommee Jakarta EE, et a
+partir de la version 9 les packages javax.* sont devenus jakarta.*. Seul le
+nom des packages change, la logique du code reste la meme.
+
+Attention : Tomcat 9 et moins utilisent javax.*. Il faut Tomcat 10 ou plus
+pour jakarta.*. Comme le pom.xml utilise jakarta.jakartaee-api 10.0.0
+(Jakarta EE 10 = Servlet 6.0), j'ai utilise Tomcat 10.1.
+
+
+MINI-EXERCICE 4.1 - Annotations
+
+Voir Livre.java. Une annotation n'execute rien toute seule : c'est une
+metadonnee que le framework (ici JPA) lit pour savoir quoi faire. @Entity dit
+que la classe correspond a une table, @Id designe la cle primaire,
+@GeneratedValue la fait generer par la base, @NotNull et @Column posent les
+contraintes du champ titre (obligatoire, 100 caracteres max).
+
+
+MINI-EXERCICE 4.3 - Map
+
+Voir RappelsJavaSE.java, partie 1. Une Map<String, Integer> associe trois
+fruits a leur prix, puis je la parcours avec entrySet() pour afficher chaque
+paire cle-valeur.
+
+
+MINI-EXERCICE 4.4 - Lambda et Stream
+
+Voir RappelsJavaSE.java, partie 2. A partir d'une List<Integer> de 1 a 10 :
+filter() garde les pairs (2, 4, 6, 8, 10), map() les multiplie par 2
+(4, 8, 12, 16, 20), reduce() additionne le tout. Resultat : 60.
+
+
+SECTION 4.5 - Fichiers
+
+Voir RappelsJavaSE.java, partie 3. J'utilise java.nio.file (Path et Files)
+plutot que java.io : c'est l'API moderne, elle permet de lire ou d'ecrire un
+fichier en une ligne.
+
+
+EXERCICE 6.1 - pom.xml
+
+jakarta.jakartaee-api est en scope provided parce que Tomcat fournit deja
+l'API a l'execution. Si on l'embarquait dans le .war, il y aurait deux
+versions des memes classes et des conflits au demarrage.
+
+Le pilote postgresql reste en scope compile (le defaut) parce que Tomcat ne
+fournit aucun pilote de base de donnees : il doit etre dans le .war.
