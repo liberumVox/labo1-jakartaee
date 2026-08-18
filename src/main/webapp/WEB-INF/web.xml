@@ -2,17 +2,8 @@
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
-                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
-
-    <display-name>Labo1 - Jakarta EE</display-name>
-
-    <!--
-        Servlet 6.0 = Jakarta EE 10 = Tomcat 10.1.x
-        Aucun <servlet-mapping> ici : le mapping est declare par l'annotation
-        @WebServlet dans BonjourServlet. Le web.xml sert uniquement a fixer la
-        version de la specification et la page d'accueil.
-    -->
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
